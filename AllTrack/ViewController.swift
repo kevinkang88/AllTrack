@@ -10,7 +10,6 @@ import UIKit
 import ARKit
 
 class ViewController: UIViewController {
-
     
     @IBOutlet var sceneView: ARSCNView!
     let config = ARWorldTrackingConfiguration()
@@ -27,16 +26,15 @@ class ViewController: UIViewController {
     }
 
     @IBAction func addButtonTapped(_ sender: Any) {
-        let node = SCNNode()
-        node.geometry = SCNCapsule(capRadius: 0.1, height: 0.3)
-        node.geometry?.firstMaterial?.specular.contents = UIColor.white
-        node.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
-        
-        let x = randomNumbers(numOne: -0.3, numTwo: 0.3)
-        let y = randomNumbers(numOne: -0.3, numTwo: 0.3)
-        let z = randomNumbers(numOne: -0.3, numTwo: 0.3)
-        node.position = SCNVector3(x,y,z)
-        self.sceneView.scene.rootNode.addChildNode(node)
+        let bodyNode = SCNNode()
+        bodyNode.geometry = SCNSphere(radius: 0.3)
+        bodyNode.geometry?.firstMaterial?.specular.contents = UIColor.white
+        bodyNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
+        let x = 0.3
+        let y = 0.3
+        let z = 0.3
+        bodyNode.position = SCNVector3(x,y,z)
+        self.sceneView.scene.rootNode.addChildNode(bodyNode)
     }
     
     @IBAction func resetButtonTapped(_ sender: Any) {
